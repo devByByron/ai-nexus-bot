@@ -9,11 +9,11 @@ class GeminiService {
   }
 
   private initializeModel() {
-    // For Netlify deployment, the API key will be available as VITE_GEMINI_API_KEY
-    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+    // For Netlify deployment, the API key will be available as GEMINI_API_KEY
+    const apiKey = import.meta.env.GEMINI_API_KEY;
     
     if (!apiKey) {
-      console.warn('Gemini API key not found. Set VITE_GEMINI_API_KEY in your environment variables.');
+      console.warn('Gemini API key not found. Set GEMINI_API_KEY in your environment variables.');
       return;
     }
 
