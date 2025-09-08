@@ -2,7 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { MessageBubble } from './MessageBubble';
-import { Send, Zap } from 'lucide-react';
+import { geminiService } from '@/services/geminiService';
+import { Send, Zap, AlertCircle } from 'lucide-react';
 
 interface Message {
   id: string;
@@ -15,14 +16,20 @@ export const AIChat = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: "Hello! I'm **AI Nexus**, your specialized AI assistant. I can only help with topics related to Artificial Intelligence, including machine learning, deep learning, NLP, computer vision, AI ethics, and more. What AI topic would you like to explore?",
+      text: "Hello! I'm **AI Nexus**, your specialized AI assistant powered by Gemini 1.5 Flash. I can only help with topics related to Artificial Intelligence, including machine learning, deep learning, NLP, computer vision, AI ethics, and more. What AI topic would you like to explore?",
       isUser: false,
       timestamp: new Date(),
     },
   ]);
   const [inputText, setInputText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [apiAvailable, setApiAvailable] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Check if Gemini service is available
+    setApiAvailable(geminiService.isAvailable());
+  }, []);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -31,39 +38,6 @@ export const AIChat = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
-
-  const isAIRelated = (text: string): boolean => {
-    const aiKeywords = [
-      'ai', 'artificial intelligence', 'machine learning', 'ml', 'deep learning', 'neural network',
-      'nlp', 'natural language processing', 'computer vision', 'reinforcement learning',
-      'generative ai', 'chatgpt', 'gpt', 'llm', 'large language model', 'transformer',
-      'algorithm', 'data science', 'automation', 'robotics', 'ai ethics', 'bias',
-      'training data', 'model', 'prediction', 'classification', 'regression',
-      'supervised learning', 'unsupervised learning', 'tensorflow', 'pytorch',
-      'openai', 'anthropic', 'claude', 'bard', 'gemini', 'midjourney', 'stable diffusion'
-    ];
-    
-    const lowerText = text.toLowerCase();
-    return aiKeywords.some(keyword => lowerText.includes(keyword));
-  };
-
-  const generateAIResponse = (userText: string): string => {
-    if (!isAIRelated(userText)) {
-      return "I can only help with AI-related topics. Please ask me something related to AI.";
-    }
-
-    // Simple AI-related responses for demo
-    const responses = [
-      "That's a fascinating AI topic! Machine learning algorithms learn patterns from data to make predictions or decisions without being explicitly programmed for every scenario.",
-      "Great question about AI! Deep learning uses neural networks with multiple layers to process complex data, mimicking how the human brain processes information.",
-      "Excellent AI inquiry! Natural Language Processing (NLP) enables computers to understand, interpret, and generate human language in a valuable way.",
-      "Interesting AI question! Computer vision allows machines to interpret and understand visual information from the world, much like human vision.",
-      "That's an important AI concept! AI ethics involves ensuring AI systems are fair, transparent, and beneficial while avoiding harmful biases.",
-      "Good AI question! Generative AI creates new content like text, images, or code based on patterns learned from training data.",
-    ];
-
-    return responses[Math.floor(Math.random() * responses.length)];
-  };
 
   const handleSendMessage = async () => {
     if (!inputText.trim()) return;
@@ -76,20 +50,33 @@ export const AIChat = () => {
     };
 
     setMessages(prev => [...prev, userMessage]);
+    const currentInput = inputText;
     setInputText('');
     setIsTyping(true);
 
-    // Simulate AI response delay
-    setTimeout(() => {
-      const aiResponse: Message = {
+    try {
+      const aiResponse = await geminiService.generateResponse(currentInput);
+      
+      const responseMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: generateAIResponse(inputText),
+        text: aiResponse,
         isUser: false,
         timestamp: new Date(),
       };
-      setMessages(prev => [...prev, aiResponse]);
+      
+      setMessages(prev => [...prev, responseMessage]);
+    } catch (error) {
+      console.error('Error getting AI response:', error);
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        text: "I'm sorry, I encountered an error while processing your request. Please try again.",
+        isUser: false,
+        timestamp: new Date(),
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
       setIsTyping(false);
-    }, 1500);
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -111,9 +98,17 @@ export const AIChat = () => {
             <h1 className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
               AI Nexus
             </h1>
-            <p className="text-sm text-muted-foreground">Your AI-focused assistant</p>
+            <p className="text-sm text-muted-foreground">
+              {apiAvailable ? 'Powered by Gemini 1.5 Flash' : 'API Configuration Required'}
+            </p>
           </div>
         </div>
+        {!apiAvailable && (
+          <div className="absolute top-4 right-4 flex items-center gap-2 text-yellow-400 bg-card/80 backdrop-blur-sm px-3 py-2 rounded-lg border border-yellow-400/20">
+            <AlertCircle className="w-4 h-4" />
+            <span className="text-xs">API Key Required</span>
+          </div>
+        )}
       </div>
 
       {/* Messages */}
@@ -158,8 +153,13 @@ export const AIChat = () => {
           </Button>
         </div>
         <p className="text-xs text-muted-foreground text-center mt-3 max-w-2xl mx-auto">
-          AI Nexus specializes in AI topics only. For best results, ask about machine learning, 
-          deep learning, NLP, computer vision, AI ethics, or related fields.
+          AI Nexus specializes in AI topics only and is powered by Gemini 1.5 Flash. 
+          Ask about machine learning, deep learning, NLP, computer vision, AI ethics, or related fields.
+          {!apiAvailable && (
+            <span className="block mt-1 text-yellow-400">
+              Note: Set VITE_GEMINI_API_KEY environment variable for full functionality.
+            </span>
+          )}
         </p>
       </div>
     </div>
