@@ -103,12 +103,6 @@ export const AIChat = () => {
             </p>
           </div>
         </div>
-        {!apiAvailable && (
-          <div className="absolute top-4 right-4 flex items-center gap-2 text-yellow-400 bg-card/80 backdrop-blur-sm px-3 py-2 rounded-lg border border-yellow-400/20">
-            <AlertCircle className="w-4 h-4" />
-            <span className="text-xs">API Key Required</span>
-          </div>
-        )}
       </div>
 
       {/* Messages */}
@@ -155,11 +149,6 @@ export const AIChat = () => {
         <p className="text-xs text-muted-foreground text-center mt-3 max-w-2xl mx-auto">
           AI Nexus specializes in AI topics only and is powered by Gemini 1.5 Flash. 
           Ask about machine learning, deep learning, NLP, computer vision, AI ethics, or related fields.
-          {!apiAvailable && (
-            <span className="block mt-1 text-yellow-400">
-              Note: Set VITE_GEMINI_API_KEY environment variable for full functionality.
-            </span>
-          )}
         </p>
       </div>
     </div>
