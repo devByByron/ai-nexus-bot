@@ -61,7 +61,7 @@
   }
 
   html {
-    @apply dark;
+    color-scheme: dark;
   }
 
   body {
@@ -105,15 +105,5 @@
 
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-primary/50;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
   }
 }
