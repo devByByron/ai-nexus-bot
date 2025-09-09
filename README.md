@@ -48,16 +48,4 @@ The app will be available at `http://localhost:5173/` (default Vite port).
 
 ---
 
-## 📌 Project Metadata  
-
-```json
-{
-  "title": "AI Concept Chatbot",
-  "description": "A concept chatbot that focuses only on Artificial Intelligence. It’s designed to answer AI-related questions in a simple, easy-to-understand way, making it useful for anyone curious about the field.",
-  "image": "aiConceptChatbot",
-  "technologies": ["React", "TypeScript", "Tailwind CSS", "Shadcn/ui", "Vite", "Gemini 1.5 Flash API"],
-  "githubUrl": "https://github.com/devByByron/ai-nexus-bot",
-  "liveUrl": "https://ai-nexus-bot.netlify.app/",
-  "featured": true
-}
 ```  
