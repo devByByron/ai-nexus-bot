@@ -1,73 +1,63 @@
-# Welcome to your Lovable project
+# AI Concept Chatbot  
 
-## Project info
+A concept chatbot designed to **answer only Artificial Intelligence–related questions**. It provides clear, easy-to-understand responses, making it a helpful tool for learners, developers, and anyone curious about AI.  
 
-**URL**: https://lovable.dev/projects/4b9c466c-e4da-4431-875f-3e4a8ef1d4e6
+🔗 **Live Demo:** [ai-nexus-bot.netlify.app](https://ai-nexus-bot.netlify.app/)  
+📂 **GitHub Repo:** [github.com/devByByron/ai-nexus-bot](https://github.com/devByByron/ai-nexus-bot)  
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## ✨ Features  
 
-**Use Lovable**
+- 💬 **AI-Focused Conversations** – The chatbot answers only questions related to Artificial Intelligence.  
+- 🧠 **Gemini 1.5 Flash API Integration** – Ensures fast, context-aware responses.  
+- 🎨 **Modern UI** – Clean, responsive design built with Tailwind CSS and Shadcn UI.  
+- ⚡ **Lightweight & Fast** – Built on Vite + React + TypeScript for speed and maintainability.  
+- 🌐 **Deployed on Netlify** – Easily accessible via live link.  
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/4b9c466c-e4da-4431-875f-3e4a8ef1d4e6) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Tech Stack  
 
-**Use your preferred IDE**
+- **Frontend:** React + TypeScript + Vite  
+- **UI Components:** Tailwind CSS + Shadcn/UI  
+- **AI Integration:** Gemini 1.5 Flash API  
+- **Hosting:** Netlify  
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🚀 Getting Started  
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+### 1. Clone the Repository  
+```bash
 git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
 cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### 2. Install Dependencies  
+```bash
+npm install
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### 3. Run the Development Server  
+```bash
+npm run dev
+```  
 
-**Use GitHub Codespaces**
+The app will be available at `http://localhost:5173/` (default Vite port).  
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## 📌 Project Metadata  
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/4b9c466c-e4da-4431-875f-3e4a8ef1d4e6) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+```json
+{
+  "title": "AI Concept Chatbot",
+  "description": "A concept chatbot that focuses only on Artificial Intelligence. It’s designed to answer AI-related questions in a simple, easy-to-understand way, making it useful for anyone curious about the field.",
+  "image": "aiConceptChatbot",
+  "technologies": ["React", "TypeScript", "Tailwind CSS", "Shadcn/ui", "Vite", "Gemini 1.5 Flash API"],
+  "githubUrl": "https://github.com/devByByron/ai-nexus-bot",
+  "liveUrl": "https://ai-nexus-bot.netlify.app/",
+  "featured": true
+}
+```  
