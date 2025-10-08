@@ -16,10 +16,10 @@
     --popover: 217 19% 12%;
     --popover-foreground: 180 100% 90%;
 
-    /* Neon Accent System */
-    --primary: 166 100% 50%;
-    --primary-foreground: 217 19% 8%;
-    --primary-glow: 166 100% 60%;
+    /* Neon Accent System - Softer, Eye-friendly Colors */
+    --primary: 166 70% 40%;
+    --primary-foreground: 217 19% 95%;
+    --primary-glow: 166 60% 45%;
 
     --secondary: 217 19% 15%;
     --secondary-foreground: 180 100% 85%;
@@ -27,28 +27,28 @@
     --muted: 217 19% 12%;
     --muted-foreground: 180 20% 60%;
 
-    --accent: 195 100% 50%;
-    --accent-foreground: 217 19% 8%;
-    --accent-glow: 195 100% 60%;
+    --accent: 195 60% 45%;
+    --accent-foreground: 217 19% 95%;
+    --accent-glow: 195 50% 50%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 70% 55%;
     --destructive-foreground: 180 100% 90%;
 
     --border: 217 19% 20%;
     --input: 217 19% 15%;
-    --ring: 166 100% 50%;
+    --ring: 166 70% 40%;
 
     --radius: 0.75rem;
 
-    /* AI Nexus Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    /* AI Nexus Gradients - Softer and More Professional */
+    --gradient-primary: linear-gradient(135deg, hsl(166 50% 35%), hsl(195 45% 40%));
     --gradient-bg: linear-gradient(180deg, hsl(var(--background)), hsl(217 19% 6%));
     --gradient-card: linear-gradient(135deg, hsl(var(--card)), hsl(217 19% 12%));
 
-    /* Neon Glow Effects */
-    --glow-primary: 0 0 20px hsl(var(--primary) / 0.3);
-    --glow-accent: 0 0 20px hsl(var(--accent) / 0.3);
-    --glow-subtle: 0 0 10px hsl(var(--primary) / 0.1);
+    /* Subtle Glow Effects */
+    --glow-primary: 0 0 15px hsl(var(--primary) / 0.2);
+    --glow-accent: 0 0 15px hsl(var(--accent) / 0.2);
+    --glow-subtle: 0 0 8px hsl(var(--primary) / 0.08);
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);

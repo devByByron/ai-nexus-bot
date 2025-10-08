@@ -16,7 +16,7 @@ export const AIChat = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: "Hello! I'm **AI Nexus**, your specialized AI assistant powered by Gemini 1.5 Flash. I can only help with topics related to Artificial Intelligence, including machine learning, deep learning, NLP, computer vision, AI ethics, and more. What AI topic would you like to explore?",
+      text: "Hello! I'm **AI Nexus**, your specialized AI assistant powered by **Gemini 2.0 Flash Experimental**. I can only help with topics related to Artificial Intelligence, including:\n\n• **Machine Learning** and **Deep Learning**\n• **Natural Language Processing** (NLP)\n• **Computer Vision** and image processing\n• **AI Ethics** and responsible AI\n• **Generative AI** and large language models\n• **AI Applications** across industries\n\nWhat AI topic would you like to explore today?",
       isUser: false,
       timestamp: new Date(),
     },
@@ -99,7 +99,7 @@ export const AIChat = () => {
               AI Nexus
             </h1>
             <p className="text-sm text-muted-foreground">
-              {apiAvailable ? 'Powered by Gemini 1.5 Flash' : 'API Configuration Required'}
+              {apiAvailable ? 'Powered by Gemini 2.0 Flash Experimental' : 'API Configuration Required'}
             </p>
           </div>
         </div>
@@ -147,7 +147,7 @@ export const AIChat = () => {
           </Button>
         </div>
         <p className="text-xs text-muted-foreground text-center mt-3 max-w-2xl mx-auto">
-          AI Nexus specializes in AI topics only and is powered by Gemini 1.5 Flash. 
+          AI Nexus specializes in AI topics only and is powered by Gemini 2.0 Flash Experimental. 
           Ask about machine learning, deep learning, NLP, computer vision, AI ethics, or related fields.
         </p>
       </div>
